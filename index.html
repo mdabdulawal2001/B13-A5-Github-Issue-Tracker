@@ -20,24 +20,92 @@
     <!-- css link -->
     <link rel="stylesheet" href="./tailwind.init.css" />
   </head>
-  <body>
-    <!-- form -->
-    <form id="input-form">
-      <input placeholder="User Name" type="text" name="" id="input-user" />
-      <input
-        placeholder="Password"
-        type="password"
-        name=""
-        id="input-password"
-      />
-      <input
-        class="btn btn-success"
-        type="submit"
-        value="Submit"
-        id="btn-submit"
-      />
-    </form>
+  <body class="bg-gray-100">
 
-    <script src="./script/script.js"></script>
+    <div class="flex items-center justify-center px-4 py-10">
+      <div
+        class="card w-full max-w-sm bg-base-100 shadow-xl border border-gray-200"
+      > 
+      <!-- start form top part -->
+        <div class="card-body items-center text-center py-10">
+          <div class="mb-4">
+            <img width="90" src="./assets/github-logo.png" alt="">
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-800">
+            GitHub Issues Tracker
+          </h2>
+          <p class="text-slate-500 text-sm">Sign in to manage your issues</p>
+
+          <!-- end form top part -->
+          <!-- form -->
+          <form id="input-form" class="w-full text-left space-y-4 mt-4">
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text font-bold text-slate-700"
+                  >Username</span
+                >
+              </label>
+              <input
+                type="text"
+                id="input-user"
+                placeholder="Enter Username"
+                class="input input-bordered w-full bg-white focus:border-blue-500 outline-none"
+              />
+              <label class="label">
+                <span class="label-text-alt text-blue-600 font-medium">Default: admin</span>
+              </label>
+            </div>
+
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text font-bold text-slate-700"
+                  >Password</span
+                >
+              </label>
+              <input
+                type="password"
+                id="input-password"
+                placeholder="Enter Password"
+                class="input input-bordered w-full bg-white focus:border-blue-500 outline-none"
+              />
+              <label class="label">
+                <span class="label-text-alt text-blue-600 font-medium"
+                  >Default: admin123</span
+                >
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-full bg-blue-600 hover:bg-blue-700 border-none normal-case text-lg text-white font-semibold shadow-md"
+            >
+              Sign In
+            </button>
+          </form>
+
+          <div
+            class="divider text-xs text-slate-400 my-6 before:bg-slate-200 after:bg-slate-200 uppercase tracking-widest"
+          >
+            OR
+          </div>
+
+          <p class="text-xs text-slate-500 mb-2">Demo Credentials:</p>
+
+          <div
+            class="bg-slate-50 rounded-xl p-6 w-full text-center border border-slate-100"
+          >
+            <p class="text-slate-700 font-medium">
+              <span class="font-bold">Username:</span> admin
+            </p>
+            <p class="text-slate-700 font-medium">
+              <span class="font-bold">Password:</span> admin123
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script/form.js"></script>
   </body>
 </html>
