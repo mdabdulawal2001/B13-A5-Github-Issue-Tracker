@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Issues Tracker</title>
-     <!-- tailwind and daisyUI cdn -->
+    <!-- tailwind and daisyUI cdn -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -16,12 +16,64 @@
       src="https://kit.fontawesome.com/c6b3ba4e95.js"
       crossorigin="anonymous"
     ></script>
-</head>
-<body>
-    <section id="card-container" class="grid grid-cols-4">
+  </head>
+  <body class="bg-[#F8FAFC] h-[500px]">
+    <header>
+      <!-- start navbar -->
+      <section class="py-5">
+        <div class="w-11/12 mx-auto md:flex justify-between items-center pt-5">
+          <div class="flex justify-center items-center space-x-2 mb-5">
+            <img class="block w-10 md:w-[60px]" src="./assets/github-logo.png" alt="">
+            <p class="text-2xl md:text-3xl font-bold">GitHub Issues Tracker</p>
+          </div>
+          <div class="md:flex gap-2 justify-center items-center">
+            <div class="w-10/12 mx-auto">
+              <input
+              type="text"
+              placeholder="Search Issues"
+              class="mb-2 md:mb-0 input input-bordered w-full md:w-auto outline-none"
+            />
+            </div>
+            <div class="mx-auto w-4/12 md:w-full">
+              <button class="btn btn-primary">+ New Issue</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end navbar -->
+    </header>
 
-    </section>
+          <!-- start dashboard buttons -->
+       <div class="bg-white md:pl-5 w-11/12 mx-auto py-5 shadow-xl rounded-lg">
+        <div class="flex justify-center items-center gap-4 md:justify-start md:flex">
+          <button
+          onclick="toggleStyle('all-btn')"
+          id="all-btn"
+          class="btn btn-primary text-white"
+        >
+          All
+        </button>
+        <button
+          onclick="toggleStyle('open-btn')"
+          id="open-btn"
+          class="btn text-black bg-white"
+        >
+          Open
+        </button>
+        <button
+          onclick="toggleStyle('closed-btn')"
+          id="closed-btn"
+          class="btn text-black bg-white"
+        >
+          Closed
+        </div>
+        </button>
+      </div>
+      <!-- end dashboard buttons -->
 
-  <script src="./script/main.js"></script>
-</body>
+    <!-- cards section -->
+    <section id="card-container" class="grid grid-cols-4"></section>
+
+    <script src="./script/main.js"></script>
+  </body>
 </html>
