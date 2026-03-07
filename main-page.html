@@ -23,16 +23,20 @@
       <section class="py-5">
         <div class="w-11/12 mx-auto md:flex justify-between items-center pt-5">
           <div class="flex justify-center items-center space-x-2 mb-5">
-            <img class="block w-10 md:w-[60px]" src="./assets/github-logo.png" alt="">
+            <img
+              class="block w-10 md:w-[60px]"
+              src="./assets/github-logo.png"
+              alt=""
+            />
             <p class="text-2xl md:text-3xl font-bold">GitHub Issues Tracker</p>
           </div>
           <div class="md:flex gap-2 justify-center items-center">
             <div class="w-10/12 mx-auto">
               <input
-              type="text"
-              placeholder="Search Issues"
-              class="mb-2 md:mb-0 input input-bordered w-full md:w-auto outline-none"
-            />
+                type="text"
+                placeholder="Search Issues"
+                class="mb-2 md:mb-0 input input-bordered w-full md:w-auto outline-none"
+              />
             </div>
             <div class="mx-auto w-4/12 md:w-full">
               <button class="btn btn-primary">+ New Issue</button>
@@ -43,10 +47,14 @@
       <!-- end navbar -->
     </header>
 
-          <!-- start dashboard buttons -->
-       <div class="bg-white md:pl-5 w-11/12 mx-auto py-5 shadow-xl rounded-lg">
-        <div class="flex justify-center items-center gap-4 md:justify-start md:flex">
-          <button
+    <!-- start dashboard buttons -->
+    <div
+      class="bg-white md:pl-5 w-11/12 mx-auto py-5 shadow-sm border border-gray-100 rounded-lg mb-5"
+    >
+      <div
+        class="flex justify-center items-center gap-4 md:justify-start md:flex"
+      >
+        <button
           onclick="toggleStyle('all-btn')"
           id="all-btn"
           class="btn btn-primary text-white"
@@ -66,13 +74,54 @@
           class="btn text-black bg-white"
         >
           Closed
-        </div>
         </button>
       </div>
-      <!-- end dashboard buttons -->
+    </div>
+    <!-- end dashboard buttons -->
+
+    <!-- start 50 issues part -->
+    <div
+      class="mx-auto card w-11/12 bg-base-100 shadow-sm border border-gray-100 p-6 rounded-lg mb-4"
+    >
+      <div
+        class="flex flex-col justify-center  md:flex-row items-center md:justify-between gap-4"
+      >
+        <div class="flex items-center gap-4">
+          <div class="avatar">
+            <div class="w-12 h-12 flex items-center justify-center">
+              <img src="./assets/Aperture.png" alt="" />
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-800">
+              <span id="total-issues-count">50</span> Issues
+            </h2>
+            <p class="text-sm text-gray-500">
+              Track and manage your project issues
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            <span class="text-sm font-medium text-gray-700">Open</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+            <span class="text-sm font-medium text-gray-700">Closed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end 50 issues part -->
 
     <!-- cards section -->
-    <section id="card-container" class="grid grid-cols-4"></section>
+    <section id="card-container" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-4 ">
+      
+    </section>
+   
 
     <script src="./script/main.js"></script>
   </body>
