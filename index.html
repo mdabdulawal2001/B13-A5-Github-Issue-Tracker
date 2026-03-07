@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Issues Tracker</title>
+    <!-- tailwind and daisyUI cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome cdn -->
+    <script
+      src="https://kit.fontawesome.com/c6b3ba4e95.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <!-- form -->
+    <form id="input-form">
+      <input placeholder="User Name" type="text" name="" id="input-user" />
+      <input placeholder="Password" type="password" name="" id="input-password" />
+      <input class="btn btn-success" type="submit" value="Submit" id="btn-submit" />
+    </form>
+
+    <script src="./script/script.js"></script>
+  </body>
 </html>
