@@ -3,8 +3,19 @@ const totalIssuesCount = document.getElementById("total-issues-count");
 
 let allData = [];
 
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("card-container").classList.add("hidden");
+  } else {
+    document.getElementById("card-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
 // all data load from api link
 const getIssues = async () => {
+  manageSpinner(true);
   try {
     const res = await fetch(
       "https://phi-lab-server.vercel.app/api/v1/lab/issues"
@@ -21,6 +32,7 @@ getIssues();
 
 // single api data loaded and used
 const getSingleIssue = async (id) => {
+  manageSpinner(true);
   try {
     const res = await fetch(
       `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
@@ -33,11 +45,9 @@ const getSingleIssue = async (id) => {
   }
 };
 
-
 // display single issue in modal
 const modal = document.getElementById("my_modal_5");
 const displaySingleIssue = (issue) => {
-
   const label1 = issue.labels?.[0] || "";
   const label2 = issue.labels?.[1] || "";
 
@@ -45,9 +55,9 @@ const displaySingleIssue = (issue) => {
   modalContent.innerHTML = "";
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="modal-box bg-white p-4 md:p-8 rounded-2xl mx-auto outline-0">
+    <div class="modal-box bg-white p-6 md:p-8 rounded-2xl mx-auto outline-0">
     
-    <h3 class="text-2xl font-bold text-slate-800">${issue.title}</h3>
+    <h3 class="text-xl font-bold text-slate-800">${issue.title}</h3>
     
     <div class="flex flex-wrap items-center gap-2 mt-4 text-slate-500 text-sm font-medium">
       
@@ -55,7 +65,9 @@ const displaySingleIssue = (issue) => {
          ${issue.status}
       </span>
       <span>•</span>
-      <span>Opened by <span class="font-semibold text-slate-700">${issue.author}</span></span>
+      <span>Opened by <span class="font-semibold text-slate-700">${
+        issue.author
+      }</span></span>
       <span>•</span>
       <span>${issue.createdAt}</span>
     </div>
@@ -77,7 +89,11 @@ const displaySingleIssue = (issue) => {
     <div class="bg-slate-50 rounded-xl p-6 mt-4 flex justify-between items-center border border-slate-100 mb-0">
       <div>
         <p class="text-slate-400 font-semibold text-sm mb-1 uppercase tracking-tight">Assignee:</p>
-        <p class="text-lg font-bold text-slate-800">${issue.assignee? issue.assignee : `<span class = "text-red-500 font-semibold">No Assignee Name</span>`}</p>
+        <p class="text-lg font-bold text-slate-800">${
+          issue.assignee
+            ? issue.assignee
+            : `<span class = "text-red-500 font-semibold">No Assignee Name</span>`
+        }</p>
       </div>
       <div class="text-right flex flex-col items-center">
         <p class="text-slate-400 font-semibold text-sm mb-2 uppercase tracking-tight">Priority:</p>
@@ -96,44 +112,40 @@ const displaySingleIssue = (issue) => {
     </div>
   </div>
   `;
-  
 
-    // handle bg status
-    const modalStatus = div.querySelector(".badge-success");
-    if(issue.status === "closed"){
-      modalStatus.classList.remove("badge-success");
-      modalStatus.classList.add("bg-purple-500");
-    }
-    else{
-      modalStatus.classList.add("badge" ,"badge-success");
-      modalStatus.classList.remove("bg-purple-500");
-    }
+  // handle bg status
+  const modalStatus = div.querySelector(".badge-success");
+  if (issue.status === "closed") {
+    modalStatus.classList.remove("badge-success");
+    modalStatus.classList.add("bg-purple-500");
+  } else {
+    modalStatus.classList.add("badge", "badge-success");
+    modalStatus.classList.remove("bg-purple-500");
+  }
 
-    // handle undefined of labels
-    const labelOneDiv = div.querySelector(".label-one");
-    const labelTwoDiv = div.querySelector(".label-two");
-    const priorityText = div.querySelector(".priority-text");
-    
-    if (!label1) labelOneDiv.classList.add("hidden");
-    if (!label2) labelTwoDiv.classList.add("hidden");
+  // handle undefined of labels
+  const labelOneDiv = div.querySelector(".label-one");
+  const labelTwoDiv = div.querySelector(".label-two");
+  const priorityText = div.querySelector(".priority-text");
 
+  if (!label1) labelOneDiv.classList.add("hidden");
+  if (!label2) labelTwoDiv.classList.add("hidden");
 
-    // update priority text color and bg
-    if (issue.priority === "medium") {
-      priorityText.classList.remove("bg-red-50");
-      priorityText.classList.remove("text-red-500");
-      priorityText.classList.add("bg-[#FFF6D1]");
-      priorityText.classList.add("text-[#F59E0B]");
-    }
-    if (issue.priority === "low") {
-      priorityText.classList.remove("text-red-500");
-      priorityText.classList.add("text-[#9CA3AF]");
-    }
+  // update priority text color and bg
+  if (issue.priority === "medium") {
+    priorityText.classList.remove("bg-red-50");
+    priorityText.classList.remove("text-red-500");
+    priorityText.classList.add("bg-[#FFF6D1]");
+    priorityText.classList.add("text-[#F59E0B]");
+  }
+  if (issue.priority === "low") {
+    priorityText.classList.remove("text-red-500");
+    priorityText.classList.add("text-[#9CA3AF]");
+  }
 
-
-
-    modalContent.appendChild(div);
-    modal.showModal()
+  modalContent.appendChild(div);
+  modal.showModal();
+  manageSpinner(false);
 };
 
 // total issues count
@@ -143,7 +155,6 @@ const updateTotalCardCount = (allData) => {
   });
   totalIssuesCount.innerText = allCards.length;
 };
-
 
 // manage card data and update
 const renderCard = (allData) => {
@@ -172,7 +183,7 @@ const renderCard = (allData) => {
       <span class="badge badge-ghost priority-text bg-red-50 text-red-500 border-none font-bold px-4 py-3 uppercase">${element.priority}</span>
     </div>
       <!-- title -->
-    <h2 class="text-lg font-bold text-slate-800 leading-tight mb-2">
+    <h2 class="text-xl font-bold text-slate-800 leading-tight mb-2">
       ${element.title}
     </h2>
     <!-- description -->
@@ -182,10 +193,10 @@ const renderCard = (allData) => {
     <!-- labels -->
     <div class="flex gap-2 mb-6">
       <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
-        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${element.labels[0]}</span>
+        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
       </div>
       <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
-        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${element.labels[1]}</span>
+        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
       </div>
     </div>
     <div class="pt-4 border-t border-gray-100 text-slate-400 text-sm space-y-1">
@@ -246,6 +257,7 @@ const renderCard = (allData) => {
 
     cardContainer.appendChild(div);
   });
+  manageSpinner(false);
 };
 
 // button toggle style
@@ -270,18 +282,43 @@ const openBtn = document.getElementById("open-btn");
 const closedBtn = document.getElementById("closed-btn");
 
 allBtn.addEventListener("click", () => {
+  manageSpinner(true);
   renderCard(allData);
   updateTotalCardCount(allData);
+  manageSpinner(false);
 });
 
 openBtn.addEventListener("click", () => {
+  manageSpinner(true);
   const openData = allData.filter((issue) => issue.status === "open");
   renderCard(openData);
   updateTotalCardCount(openData);
+  manageSpinner(false);
 });
 
 closedBtn.addEventListener("click", () => {
+  manageSpinner(true);
   const closedData = allData.filter((issue) => issue.status === "closed");
   renderCard(closedData);
   updateTotalCardCount(closedData);
+  manageSpinner(false);
+});
+
+// search
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+
+searchBtn.addEventListener("click", () => {
+  const searchInputText = searchInput.value.toLowerCase();
+    if (searchInputText === "") {
+    renderCard(allData);
+    updateTotalCardCount(allData);
+    return;
+    }
+
+  const filteredData = allData.filter((issue) =>
+    `${issue.title} ${issue.description} ${issue.author}`.toLowerCase().includes(searchInputText)
+  );
+  renderCard(filteredData);
+  updateTotalCardCount(filteredData);
 });

@@ -33,13 +33,14 @@
           <div class="md:flex gap-2 justify-center items-center">
             <div class="w-10/12 mx-auto">
               <input
+                id="search-input"
                 type="text"
                 placeholder="Search Issues"
                 class="mb-2 md:mb-0 input input-bordered w-full md:w-auto outline-none"
               />
             </div>
-            <div class="mx-auto w-4/12 md:w-full">
-              <button class="btn btn-primary">Search</button>
+            <div class="mx-auto flex justify-center w-4/12 md:w-full">
+              <button id="search-btn" class="btn btn-primary">Search</button>
             </div>
           </div>
         </div>
@@ -78,6 +79,7 @@
       </div>
     </div>
     <!-- end dashboard buttons -->
+
 
     <!-- start 50 issues part -->
     <div
@@ -118,7 +120,7 @@
     <!-- end 50 issues part -->
 
     <!-- start modal design -->
-    <dialog id="my_modal_5" class="modal modal-middle md:w-11/12">
+    <dialog id="my_modal_5" class="modal modal-middle">
       <div id="modal-content">
         <!-- modal body -->
 
@@ -131,10 +133,16 @@
     <!-- end modal design -->
        
     <!-- cards section -->
+     <div id="spinner" class="w-11/12 mx-auto flex justify-center items-center bg-gray-100 mb-2 rounded-lg">
+        <!-- start spinner -->
+       <span class="loading loading-dots loading-xl"></span>
+      <!-- end spinner -->
+      </div>
     <section
       id="card-container"
       class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-4"
-    ></section>
+    >
+    </section>
 
     <script src="./script/main.js"></script>
   </body>
