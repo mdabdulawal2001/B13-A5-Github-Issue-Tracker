@@ -45,9 +45,9 @@ const displaySingleIssue = (issue) => {
   modalContent.innerHTML = "";
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="modal-box max-w-2xl bg-white p-8 rounded-2xl">
+    <div class="modal-box bg-white p-4 md:p-8 rounded-2xl mx-auto outline-0">
     
-    <h3 class="text-3xl font-bold text-slate-800">${issue.title}</h3>
+    <h3 class="text-2xl font-bold text-slate-800">${issue.title}</h3>
     
     <div class="flex flex-wrap items-center gap-2 mt-4 text-slate-500 text-sm font-medium">
       
@@ -61,7 +61,7 @@ const displaySingleIssue = (issue) => {
     </div>
 
    <!-- labels -->
-    <div class="flex gap-2 mb-6 mt-6">
+    <div class="flex gap-2 mb-0 mt-6">
       <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
         <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
       </div>
@@ -70,16 +70,16 @@ const displaySingleIssue = (issue) => {
       </div>
     </div>
 
-    <p class="mt-8 text-lg text-slate-600 leading-snug">
+    <p class="mt-5 text-[15px] text-slate-600 leading-snug">
       ${issue.description}
     </p>
 
-    <div class="bg-slate-50 rounded-xl p-6 mt-8 flex justify-between items-center border border-slate-100">
+    <div class="bg-slate-50 rounded-xl p-6 mt-4 flex justify-between items-center border border-slate-100 mb-0">
       <div>
         <p class="text-slate-400 font-semibold text-sm mb-1 uppercase tracking-tight">Assignee:</p>
-        <p class="text-xl font-bold text-slate-800">${issue.assignee}</p>
+        <p class="text-lg font-bold text-slate-800">${issue.assignee? issue.assignee : `<span class = "text-red-500 font-semibold">No Assignee Name</span>`}</p>
       </div>
-      <div class="text-right">
+      <div class="text-right flex flex-col items-center">
         <p class="text-slate-400 font-semibold text-sm mb-2 uppercase tracking-tight">Priority:</p>
         <span class="priority-text bg-red-50 text-red-500 px-6 py-1 rounded-md font-bold text-xs shadow-lg shadow-red-200 uppercase">
           ${issue.priority}
@@ -87,9 +87,9 @@ const displaySingleIssue = (issue) => {
       </div>
     </div>
 
-    <div class="modal-action mt-10">
+    <div class="modal-action mt-7">
       <form method="dialog">
-        <button class="btn bg-[#4f46e5] hover:bg-[#4338ca] text-white border-none px-12 rounded-lg text-lg normal-case">
+        <button class="btn bg-[#4f46e5] hover:bg-[#4338ca] text-white px-7 rounded-lg text-sm normal-case outline-0">
           Close
         </button>
       </form>
@@ -97,7 +97,17 @@ const displaySingleIssue = (issue) => {
   </div>
   `;
   
-    
+
+    // handle bg status
+    const modalStatus = div.querySelector(".badge-success");
+    if(issue.status === "closed"){
+      modalStatus.classList.remove("badge-success");
+      modalStatus.classList.add("bg-purple-500");
+    }
+    else{
+      modalStatus.classList.add("badge" ,"badge-success");
+      modalStatus.classList.remove("bg-purple-500");
+    }
 
     // handle undefined of labels
     const labelOneDiv = div.querySelector(".label-one");
@@ -133,7 +143,6 @@ const updateTotalCardCount = (allData) => {
   });
   totalIssuesCount.innerText = allCards.length;
 };
-
 
 
 // manage card data and update
