@@ -5,7 +5,7 @@ let allData = [];
 
 
 
-// data load from api link
+// all data load from api link
 const getIssues = async () => {
   try {
     const res = await fetch(
@@ -21,6 +21,17 @@ const getIssues = async () => {
 
 getIssues();
 
+const getSingleIssue = async (id) =>{
+  try{
+      const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+      const data = await res.json();
+      const issue = data.data;
+  }
+  catch (err) {
+    console.error("Error:", err);
+  }
+}
+
 
 // total issues count
 const updateTotalCardCount = (allData) => {
@@ -29,6 +40,9 @@ const updateTotalCardCount = (allData) => {
   });
   totalIssuesCount.innerText = allCards.length;
 };
+
+
+// const modal = document.getElementById("my_modal_5");
 
 // manage card data and update
 const renderCard = (allData) => {
@@ -41,7 +55,7 @@ const renderCard = (allData) => {
     const div = document.createElement("div");
     div.innerHTML = `
          <!-- Issue card -->
-    <div class="h-[330px] bg-base-100 shadow-xl border border-gray-200 rounded-xl overflow-hidden">
+    <div onclick="getSingleIssue(${element.id})" class="h-[330px] bg-base-100 shadow-xl border border-gray-200 rounded-xl overflow-hidden">
       <!-- green line -->
   <div id="green-line" class="hidden h-1 bg-emerald-500 w-full"></div>
       <!-- purple line -->
