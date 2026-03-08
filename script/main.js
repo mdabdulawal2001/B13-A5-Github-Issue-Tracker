@@ -37,6 +37,10 @@ const getSingleIssue = async (id) => {
 // display single issue in modal
 const modal = document.getElementById("my_modal_5");
 const displaySingleIssue = (issue) => {
+
+  const label1 = issue.labels?.[0] || "";
+  const label2 = issue.labels?.[1] || "";
+
   const modalContent = document.getElementById("modal-content");
   modalContent.innerHTML = "";
   const div = document.createElement("div");
@@ -46,8 +50,9 @@ const displaySingleIssue = (issue) => {
     <h3 class="text-3xl font-bold text-slate-800">${issue.title}</h3>
     
     <div class="flex flex-wrap items-center gap-2 mt-4 text-slate-500 text-sm font-medium">
+      
       <span class="badge badge-success gap-2 text-white py-3 px-4 rounded-full border-none">
-        <div class="h-2 w-2 bg-white rounded-full"></div> ${issue.status}
+         ${issue.status}
       </span>
       <span>•</span>
       <span>Opened by <span class="font-semibold text-slate-700">${issue.author}</span></span>
@@ -58,10 +63,10 @@ const displaySingleIssue = (issue) => {
    <!-- labels -->
     <div class="flex gap-2 mb-6 mt-6">
       <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
-        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${issue.labels[0]}</span>
+        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
       </div>
       <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
-        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${issue.labels[1]}</span>
+        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
       </div>
     </div>
 
@@ -76,7 +81,7 @@ const displaySingleIssue = (issue) => {
       </div>
       <div class="text-right">
         <p class="text-slate-400 font-semibold text-sm mb-2 uppercase tracking-tight">Priority:</p>
-        <span class="bg-[#ef4444] text-white px-6 py-1 rounded-md font-bold text-xs shadow-lg shadow-red-200">
+        <span class="priority-text bg-red-50 text-red-500 px-6 py-1 rounded-md font-bold text-xs shadow-lg shadow-red-200 uppercase">
           ${issue.priority}
         </span>
       </div>
@@ -91,8 +96,34 @@ const displaySingleIssue = (issue) => {
     </div>
   </div>
   `;
-  modalContent.appendChild(div);
-  modal.showModal()
+  
+    
+
+    // handle undefined of labels
+    const labelOneDiv = div.querySelector(".label-one");
+    const labelTwoDiv = div.querySelector(".label-two");
+    const priorityText = div.querySelector(".priority-text");
+    
+    if (!label1) labelOneDiv.classList.add("hidden");
+    if (!label2) labelTwoDiv.classList.add("hidden");
+
+
+    // update priority text color and bg
+    if (issue.priority === "medium") {
+      priorityText.classList.remove("bg-red-50");
+      priorityText.classList.remove("text-red-500");
+      priorityText.classList.add("bg-[#FFF6D1]");
+      priorityText.classList.add("text-[#F59E0B]");
+    }
+    if (issue.priority === "low") {
+      priorityText.classList.remove("text-red-500");
+      priorityText.classList.add("text-[#9CA3AF]");
+    }
+
+
+
+    modalContent.appendChild(div);
+    modal.showModal()
 };
 
 // total issues count
