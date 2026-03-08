@@ -84,7 +84,7 @@
       class="mx-auto card w-11/12 bg-base-100 shadow-sm border border-gray-100 p-6 rounded-lg mb-4"
     >
       <div
-        class="flex flex-col justify-center  md:flex-row items-center md:justify-between gap-4"
+        class="flex flex-col justify-center md:flex-row items-center md:justify-between gap-4"
       >
         <div class="flex items-center gap-4">
           <div class="avatar">
@@ -118,70 +118,23 @@
     <!-- end 50 issues part -->
 
     <!-- start modal design -->
-   <!-- <button class="btn btn-primary" onclick="my_modal_5.showModal()">Open Bug Details</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div id="modal-content">
+        <!-- modal body -->
 
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box max-w-2xl bg-white p-8 rounded-2xl">
-    
-    <h3 class="text-3xl font-bold text-slate-800">Fix broken image uploads</h3>
-    
-    <div class="flex flex-wrap items-center gap-2 mt-4 text-slate-500 text-sm font-medium">
-      <span class="badge badge-success gap-2 text-white py-3 px-4 rounded-full border-none">
-        <div class="h-2 w-2 bg-white rounded-full"></div> Opened
-      </span>
-      <span>•</span>
-      <span>Opened by <span class="font-semibold text-slate-700">Fahim Ahmed</span></span>
-      <span>•</span>
-      <span>22/02/2026</span>
-    </div>
-
-   <!-- labels -->
-    <div class="flex gap-2 mb-6 mt-6">
-      <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
-        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${element.labels[0]}</span>
-      </div>
-      <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
-        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${element.labels[1]}</span>
-      </div>
-    </div>
-
-    <p class="mt-8 text-lg text-slate-600 leading-snug">
-      The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.
-    </p>
-
-    <div class="bg-slate-50 rounded-xl p-6 mt-8 flex justify-between items-center border border-slate-100">
-      <div>
-        <p class="text-slate-400 font-semibold text-sm mb-1 uppercase tracking-tight">Assignee:</p>
-        <p class="text-xl font-bold text-slate-800">Fahim Ahmed</p>
-      </div>
-      <div class="text-right">
-        <p class="text-slate-400 font-semibold text-sm mb-2 uppercase tracking-tight">Priority:</p>
-        <span class="bg-[#ef4444] text-white px-6 py-1 rounded-md font-bold text-xs shadow-lg shadow-red-200">
-          HIGH
-        </span>
-      </div>
-    </div>
-
-    <div class="modal-action mt-10">
-      <form method="dialog">
-        <button class="btn bg-[#4f46e5] hover:bg-[#4338ca] text-white border-none px-12 rounded-lg text-lg normal-case">
-          Close
-        </button>
+        <!-- close btn -->
+        <form method="dialog" class="modal-backdrop">
+        <button>close</button>
       </form>
-    </div>
-  </div>
-  
-  <form method="dialog" class="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
+      </div>
+    </dialog>
     <!-- end modal design -->
-
+       
     <!-- cards section -->
-    <section id="card-container" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-4">
-      
-    </section>
-   
+    <section
+      id="card-container"
+      class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 space-y-4"
+    ></section>
 
     <script src="./script/main.js"></script>
   </body>

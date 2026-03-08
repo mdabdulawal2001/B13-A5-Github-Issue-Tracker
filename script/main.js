@@ -3,8 +3,6 @@ const totalIssuesCount = document.getElementById("total-issues-count");
 
 let allData = [];
 
-
-
 // all data load from api link
 const getIssues = async () => {
   try {
@@ -21,17 +19,81 @@ const getIssues = async () => {
 
 getIssues();
 
-const getSingleIssue = async (id) =>{
-  try{
-      const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
-      const data = await res.json();
-      const issue = data.data;
-  }
-  catch (err) {
+// single api data loaded and used
+const getSingleIssue = async (id) => {
+  try {
+    const res = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+    );
+    const data = await res.json();
+    const issue = data.data;
+    displaySingleIssue(issue);
+  } catch (err) {
     console.error("Error:", err);
   }
-}
+};
 
+
+// display single issue in modal
+const modal = document.getElementById("my_modal_5");
+const displaySingleIssue = (issue) => {
+  const modalContent = document.getElementById("modal-content");
+  modalContent.innerHTML = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <div class="modal-box max-w-2xl bg-white p-8 rounded-2xl">
+    
+    <h3 class="text-3xl font-bold text-slate-800">${issue.title}</h3>
+    
+    <div class="flex flex-wrap items-center gap-2 mt-4 text-slate-500 text-sm font-medium">
+      <span class="badge badge-success gap-2 text-white py-3 px-4 rounded-full border-none">
+        <div class="h-2 w-2 bg-white rounded-full"></div> ${issue.status}
+      </span>
+      <span>•</span>
+      <span>Opened by <span class="font-semibold text-slate-700">${issue.author}</span></span>
+      <span>•</span>
+      <span>${issue.createdAt}</span>
+    </div>
+
+   <!-- labels -->
+    <div class="flex gap-2 mb-6 mt-6">
+      <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
+        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${issue.labels[0]}</span>
+      </div>
+      <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
+        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${issue.labels[1]}</span>
+      </div>
+    </div>
+
+    <p class="mt-8 text-lg text-slate-600 leading-snug">
+      ${issue.description}
+    </p>
+
+    <div class="bg-slate-50 rounded-xl p-6 mt-8 flex justify-between items-center border border-slate-100">
+      <div>
+        <p class="text-slate-400 font-semibold text-sm mb-1 uppercase tracking-tight">Assignee:</p>
+        <p class="text-xl font-bold text-slate-800">${issue.assignee}</p>
+      </div>
+      <div class="text-right">
+        <p class="text-slate-400 font-semibold text-sm mb-2 uppercase tracking-tight">Priority:</p>
+        <span class="bg-[#ef4444] text-white px-6 py-1 rounded-md font-bold text-xs shadow-lg shadow-red-200">
+          ${issue.priority}
+        </span>
+      </div>
+    </div>
+
+    <div class="modal-action mt-10">
+      <form method="dialog">
+        <button class="btn bg-[#4f46e5] hover:bg-[#4338ca] text-white border-none px-12 rounded-lg text-lg normal-case">
+          Close
+        </button>
+      </form>
+    </div>
+  </div>
+  `;
+  modalContent.appendChild(div);
+  modal.showModal()
+};
 
 // total issues count
 const updateTotalCardCount = (allData) => {
@@ -42,7 +104,6 @@ const updateTotalCardCount = (allData) => {
 };
 
 
-// const modal = document.getElementById("my_modal_5");
 
 // manage card data and update
 const renderCard = (allData) => {
@@ -162,26 +223,25 @@ function toggleStyle(activeId) {
   });
 }
 
-
-// show/hide open/closed tab button related card 
+// show/hide open/closed tab button related card
 
 const allBtn = document.getElementById("all-btn");
 const openBtn = document.getElementById("open-btn");
 const closedBtn = document.getElementById("closed-btn");
 
-allBtn.addEventListener("click", ()=>{
+allBtn.addEventListener("click", () => {
   renderCard(allData);
   updateTotalCardCount(allData);
-})
+});
 
-openBtn.addEventListener("click", ()=>{
+openBtn.addEventListener("click", () => {
   const openData = allData.filter((issue) => issue.status === "open");
   renderCard(openData);
   updateTotalCardCount(openData);
-})
+});
 
-closedBtn.addEventListener("click", ()=>{
+closedBtn.addEventListener("click", () => {
   const closedData = allData.filter((issue) => issue.status === "closed");
   renderCard(closedData);
   updateTotalCardCount(closedData);
-})
+});
