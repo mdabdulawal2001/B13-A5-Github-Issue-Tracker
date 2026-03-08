@@ -1,7 +1,7 @@
+let allData = [];
 const cardContainer = document.getElementById("card-container");
 const totalIssuesCount = document.getElementById("total-issues-count");
 
-let allData = [];
 
 const manageSpinner = (status) => {
   if (status == true) {
@@ -45,13 +45,9 @@ const getSingleIssue = async (id) => {
   }
 };
 
-
 // total issues count
 const updateTotalCardCount = (allData) => {
-  const allCards = allData.map((el) => {
-    return el;
-  });
-  totalIssuesCount.innerText = allCards.length;
+  totalIssuesCount.innerText = allData.length;
 };
 
 // priority text handle
@@ -296,7 +292,7 @@ const renderCard = (allData) => {
 };
 
 // button toggle style
-function toggleStyle(activeId) {
+const toggleStyle = (activeId) => {
   const buttons = ["all-btn", "open-btn", "closed-btn"];
   buttons.forEach((id) => {
     const btn = document.getElementById(id);
