@@ -45,6 +45,40 @@ const getSingleIssue = async (id) => {
   }
 };
 
+
+// total issues count
+const updateTotalCardCount = (allData) => {
+  const allCards = allData.map((el) => {
+    return el;
+  });
+  totalIssuesCount.innerText = allCards.length;
+};
+
+// priority text handle
+const setPriorityStyle = (priority, element) => {
+
+  element.classList.remove(
+    "bg-red-50",
+    "text-red-500",
+    "bg-[#FFF6D1]",
+    "text-[#F59E0B]",
+    "text-[#9CA3AF]"
+  );
+
+  if(priority === "high"){
+    element.classList.add("bg-red-50","text-red-500");
+  }
+
+  if(priority === "medium"){
+    element.classList.add("bg-[#FFF6D1]","text-[#F59E0B]");
+  }
+
+  if(priority === "low"){
+    element.classList.add("text-[#9CA3AF]");
+  }
+
+}
+
 // display single issue in modal
 const modal = document.getElementById("my_modal_5");
 const displaySingleIssue = (issue) => {
@@ -131,34 +165,32 @@ const displaySingleIssue = (issue) => {
   if (!label1) labelOneDiv.classList.add("hidden");
   if (!label2) labelTwoDiv.classList.add("hidden");
 
+  setPriorityStyle(issue.priority, priorityText);
+
   // update priority text color and bg
-  if (issue.priority === "medium") {
-    priorityText.classList.remove("bg-red-50");
-    priorityText.classList.remove("text-red-500");
-    priorityText.classList.add("bg-[#FFF6D1]");
-    priorityText.classList.add("text-[#F59E0B]");
-  }
-  if (issue.priority === "low") {
-    priorityText.classList.remove("text-red-500");
-    priorityText.classList.add("text-[#9CA3AF]");
-  }
+  // if (issue.priority === "medium") {
+  //   priorityText.classList.remove("bg-red-50");
+  //   priorityText.classList.remove("text-red-500");
+  //   priorityText.classList.add("bg-[#FFF6D1]");
+  //   priorityText.classList.add("text-[#F59E0B]");
+  // }
+  // if (issue.priority === "low") {
+  //   priorityText.classList.remove("text-red-500");
+  //   priorityText.classList.add("text-[#9CA3AF]");
+  // }
 
   modalContent.appendChild(div);
   modal.showModal();
   manageSpinner(false);
 };
 
-// total issues count
-const updateTotalCardCount = (allData) => {
-  const allCards = allData.map((el) => {
-    return el;
-  });
-  totalIssuesCount.innerText = allCards.length;
-};
-
 // manage card data and update
 const renderCard = (allData) => {
   cardContainer.innerHTML = "";
+  if(allData.length === 0){
+  cardContainer.innerHTML = `<p class="mt-5 col-span-4 text-center text-black text-3xl font-semi-bold">No Issues Found</p>`;
+  return;
+}
 
   allData.forEach((element) => {
     const label1 = element.labels?.[0] || "";
@@ -169,9 +201,9 @@ const renderCard = (allData) => {
          <!-- Issue card -->
     <div onclick="getSingleIssue(${element.id})" class="h-[330px] bg-base-100 shadow-xl border border-gray-200 rounded-xl overflow-hidden">
       <!-- green line -->
-  <div id="green-line" class="hidden h-1 bg-emerald-500 w-full"></div>
+  <div class="green-line hidden h-1 bg-emerald-500 w-full"></div>
       <!-- purple line -->
-  <div id="purple-line" class="hidden h-1 bg-blue-700 w-full"></div>
+  <div class="purple-line hidden h-1 bg-blue-700 w-full"></div>
 
   <div class="p-5">
     <div class="flex justify-between items-start mb-4">
@@ -213,8 +245,8 @@ const renderCard = (allData) => {
     const openImg = div.querySelector(".open-status-img");
     const closedImg = div.querySelector(".closed-status-img");
     const priorityText = div.querySelector(".priority-text");
-    const greenLine = div.querySelector("#green-line");
-    const purpleLine = div.querySelector("#purple-line");
+    const greenLine = div.querySelector(".green-line");
+    const purpleLine = div.querySelector(".purple-line");
 
     // status image show/hide related condition
     if (element.priority === "high" || element.priority === "medium") {
@@ -225,17 +257,20 @@ const renderCard = (allData) => {
       closedImg.classList.remove("hidden");
     }
 
-    // update priority text color and bg
-    if (element.priority === "medium") {
-      priorityText.classList.remove("bg-red-50");
-      priorityText.classList.remove("text-red-500");
-      priorityText.classList.add("bg-[#FFF6D1]");
-      priorityText.classList.add("text-[#F59E0B]");
-    }
-    if (element.priority === "low") {
-      priorityText.classList.remove("text-red-500");
-      priorityText.classList.add("text-[#9CA3AF]");
-    }
+    setPriorityStyle(element.priority, priorityText);
+
+    // // update priority text color and bg
+    // if (element.priority === "medium") {
+    //   priorityText.classList.remove("bg-red-50");
+    //   priorityText.classList.remove("text-red-500");
+    //   priorityText.classList.add("bg-[#FFF6D1]");
+    //   priorityText.classList.add("text-[#F59E0B]");
+    // }
+    // if (element.priority === "low") {
+    //   priorityText.classList.remove("text-red-500");
+    //   priorityText.classList.add("text-[#9CA3AF]");
+    // }
+
 
     // handle undefined of labels
     const labelOneDiv = div.querySelector(".label-one");
