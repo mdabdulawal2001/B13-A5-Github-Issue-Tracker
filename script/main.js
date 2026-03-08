@@ -1,6 +1,10 @@
 const cardContainer = document.getElementById("card-container");
 const totalIssuesCount = document.getElementById("total-issues-count");
 
+let allData = [];
+
+
+
 // data load from api link
 const getIssues = async () => {
   try {
@@ -8,7 +12,8 @@ const getIssues = async () => {
       "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     );
     const data = await res.json();
-    return renderCard(data), updateTotalCardCount(data);
+    allData = data.data;
+    renderCard(allData), updateTotalCardCount(allData);
   } catch (err) {
     console.error("Error:", err);
   }
@@ -16,17 +21,20 @@ const getIssues = async () => {
 
 getIssues();
 
+
 // total issues count
-const updateTotalCardCount = (data) => {
-  const allCards = data.data.map((el) => {
+const updateTotalCardCount = (allData) => {
+  const allCards = allData.map((el) => {
     return el;
   });
   totalIssuesCount.innerText = allCards.length;
 };
 
 // manage card data and update
-const renderCard = (data) => {
-  data.data.forEach((element) => {
+const renderCard = (allData) => {
+  cardContainer.innerHTML = "";
+
+  allData.forEach((element) => {
     const label1 = element.labels?.[0] || "";
     const label2 = element.labels?.[1] || "";
 
@@ -139,3 +147,27 @@ function toggleStyle(activeId) {
     }
   });
 }
+
+
+// show/hide open/closed tab button related card 
+
+const allBtn = document.getElementById("all-btn");
+const openBtn = document.getElementById("open-btn");
+const closedBtn = document.getElementById("closed-btn");
+
+allBtn.addEventListener("click", ()=>{
+  renderCard(allData);
+  updateTotalCardCount(allData);
+})
+
+openBtn.addEventListener("click", ()=>{
+  const openData = allData.filter((issue) => issue.status === "open");
+  renderCard(openData);
+  updateTotalCardCount(openData);
+})
+
+closedBtn.addEventListener("click", ()=>{
+  const closedData = allData.filter((issue) => issue.status === "closed");
+  renderCard(closedData);
+  updateTotalCardCount(closedData);
+})
