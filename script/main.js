@@ -205,7 +205,7 @@ const renderCard = (allData) => {
     <div class="flex justify-between items-start mb-4">
       <div>
         <img class="open-status-img" src="../assets/Open-Status.png" alt="">
-        <img class="closed-status-img" src="../assets/Closed- Status .png" alt="">
+        <img class="closed-status-img" src="../assets/Closed-Status.png" alt="">
       </div>
       <!-- priority -->
       <span class="badge badge-ghost priority-text bg-red-50 text-red-500 border-none font-bold px-4 py-3 uppercase">${element.priority}</span>
