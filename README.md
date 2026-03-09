@@ -49,9 +49,11 @@ Answer:
 An arrow function is a shorter and modern way to write functions in JavaScript. It uses the arrow symbol (=>) and makes the code shorter and cleaner. When an arrow function has only one expression (one line of code), JavaScript automatically returns the result. Because of this automatic return, we do not need to use curly braces {} or the return keyword. But when the function has multiple lines of code, JavaScript cannot automatically understand which value should be returned. Therefore, we must use curly braces {} to define the function body and explicitly write the return statement.
 
 Example (one line arrow function):
+
     const add = (a,b) => a + b;
 
 Example (multiple line arrow function):
+
     const add = (a, b) => {
     const result = a + b;
       return result;
