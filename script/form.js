@@ -23,5 +23,5 @@ document.getElementById("input-form").addEventListener("submit", (event) => {
   }
 
   // window.location.href = "../main-page.html";
-  window.location.assign("../main-page.html");
+  window.location.assign("main-page.html");
 });
