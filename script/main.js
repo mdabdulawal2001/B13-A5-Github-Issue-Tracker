@@ -105,10 +105,10 @@ const displaySingleIssue = (issue) => {
    <!-- labels -->
     <div class="flex gap-2 mb-0 mt-6">
       <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
-        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
+        <span class="text-xs"><img src="./assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
       </div>
       <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
-        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
+        <span><img src="./assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
       </div>
     </div>
 
@@ -204,8 +204,8 @@ const renderCard = (allData) => {
   <div class="p-5">
     <div class="flex justify-between items-start mb-4">
       <div>
-        <img class="open-status-img" src="../assets/Open-Status.png" alt="">
-        <img class="closed-status-img" src="../assets/Closed-Status.png" alt="">
+        <img class="open-status-img" src="./assets/Open-Status.png" alt="">
+        <img class="closed-status-img" src="./assets/Closed-Status.png" alt="">
       </div>
       <!-- priority -->
       <span class="badge badge-ghost priority-text bg-red-50 text-red-500 border-none font-bold px-4 py-3 uppercase">${element.priority}</span>
