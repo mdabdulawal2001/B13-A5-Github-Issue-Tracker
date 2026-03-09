@@ -2,7 +2,6 @@ let allData = [];
 const cardContainer = document.getElementById("card-container");
 const totalIssuesCount = document.getElementById("total-issues-count");
 
-
 const manageSpinner = (status) => {
   if (status == true) {
     document.getElementById("spinner").classList.remove("hidden");
@@ -52,7 +51,6 @@ const updateTotalCardCount = (allData) => {
 
 // priority text handle
 const setPriorityStyle = (priority, element) => {
-
   element.classList.remove(
     "bg-red-50",
     "text-red-500",
@@ -61,16 +59,27 @@ const setPriorityStyle = (priority, element) => {
     "text-[#9CA3AF]"
   );
 
-  if(priority === "high"){
-    element.classList.add("bg-red-50","text-red-500");
+  if (priority === "high") {
+    element.classList.add("bg-red-50", "text-red-500");
   }
 
-  if(priority === "medium"){
-    element.classList.add("bg-[#FFF6D1]","text-[#F59E0B]");
+  if (priority === "medium") {
+    element.classList.add("bg-[#FFF6D1]", "text-[#F59E0B]");
   }
 
-  if(priority === "low"){
+  if (priority === "low") {
     element.classList.add("text-[#9CA3AF]");
+  }
+};
+
+// change card status bg
+const changeCardStatusStyle = (cardStatus, statusDiv) => {
+    if (cardStatus === "closed") {
+    statusDiv.classList.remove("badge-success");
+    statusDiv.classList.add("bg-purple-500");
+  } else {
+    statusDiv.classList.add("badge", "badge-success");
+    statusDiv.classList.remove("bg-purple-500");
   }
 
 }
@@ -143,15 +152,9 @@ const displaySingleIssue = (issue) => {
   </div>
   `;
 
-  // handle bg status
+  // handle status bg
   const modalStatus = div.querySelector(".badge-success");
-  if (issue.status === "closed") {
-    modalStatus.classList.remove("badge-success");
-    modalStatus.classList.add("bg-purple-500");
-  } else {
-    modalStatus.classList.add("badge", "badge-success");
-    modalStatus.classList.remove("bg-purple-500");
-  }
+  changeCardStatusStyle(issue.status, modalStatus);
 
   // handle undefined of labels
   const labelOneDiv = div.querySelector(".label-one");
@@ -183,10 +186,10 @@ const displaySingleIssue = (issue) => {
 // manage card data and update
 const renderCard = (allData) => {
   cardContainer.innerHTML = "";
-  if(allData.length === 0){
-  cardContainer.innerHTML = `<p class="mt-5 col-span-4 text-center text-black text-3xl font-semi-bold">No Issues Found</p>`;
-  return;
-}
+  if (allData.length === 0) {
+    cardContainer.innerHTML = `<p class="mt-5 col-span-4 text-center text-black text-3xl font-semi-bold">No Issues Found</p>`;
+    return;
+  }
 
   allData.forEach((element) => {
     const label1 = element.labels?.[0] || "";
@@ -195,7 +198,7 @@ const renderCard = (allData) => {
     const div = document.createElement("div");
     div.innerHTML = `
          <!-- Issue card -->
-    <div onclick="getSingleIssue(${element.id})" class="h-[330px] bg-base-100 shadow-xl border border-gray-200 rounded-xl overflow-hidden">
+    <div onclick="getSingleIssue(${element.id})" class="h-[370px] bg-base-100 shadow-xl border border-gray-200 rounded-xl overflow-hidden">
       <!-- green line -->
   <div class="green-line hidden h-1 bg-emerald-500 w-full"></div>
       <!-- purple line -->
@@ -210,6 +213,9 @@ const renderCard = (allData) => {
       <!-- priority -->
       <span class="badge badge-ghost priority-text bg-red-50 text-red-500 border-none font-bold px-4 py-3 uppercase">${element.priority}</span>
     </div>
+    <span class="mt-1 mb-3 badge badge-success text-white py-3 px-4 rounded-full border-none">
+         ${element.status}
+      </span>
       <!-- title -->
     <h2 class="text-xl font-bold text-slate-800 leading-tight mb-2">
       ${element.title}
@@ -253,7 +259,19 @@ const renderCard = (allData) => {
       closedImg.classList.remove("hidden");
     }
 
+    // update priority text color and bg
     setPriorityStyle(element.priority, priorityText);
+
+  // handle card status bg
+  const cardStatus = div.querySelector(".badge-success");
+  changeCardStatusStyle(element.status, cardStatus);
+  // if (element.status === "closed") {
+  //   cardStatus.classList.remove("badge-success");
+  //   cardStatus.classList.add("bg-purple-500");
+  // } else {
+  //   cardStatus.classList.add("badge", "badge-success");
+  //   cardStatus.classList.remove("bg-purple-500");
+  // }
 
     // // update priority text color and bg
     // if (element.priority === "medium") {
@@ -266,7 +284,6 @@ const renderCard = (allData) => {
     //   priorityText.classList.remove("text-red-500");
     //   priorityText.classList.add("text-[#9CA3AF]");
     // }
-
 
     // handle undefined of labels
     const labelOneDiv = div.querySelector(".label-one");
@@ -304,7 +321,7 @@ const toggleStyle = (activeId) => {
       btn.classList.add("bg-white", "text-black");
     }
   });
-}
+};
 
 // show/hide open/closed tab button related card
 
@@ -341,14 +358,16 @@ const searchBtn = document.getElementById("search-btn");
 
 searchBtn.addEventListener("click", () => {
   const searchInputText = searchInput.value.toLowerCase();
-    if (searchInputText === "") {
+  if (searchInputText === "") {
     renderCard(allData);
     updateTotalCardCount(allData);
     return;
-    }
+  }
 
   const filteredData = allData.filter((issue) =>
-    `${issue.title} ${issue.description} ${issue.author}`.toLowerCase().includes(searchInputText)
+    `${issue.title} ${issue.description} ${issue.author}`
+      .toLowerCase()
+      .includes(searchInputText)
   );
   renderCard(filteredData);
   updateTotalCardCount(filteredData);
