@@ -16,7 +16,8 @@ Answer :
 
 The spread operator (...) is used to expand or copy elements of an array or object. It spreads the elements into individual values.
 
-Example
+Example :
+
     const numbers = [1,2,3];
     const newNumbers = [...numbers,4,5];
 
