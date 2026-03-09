@@ -221,10 +221,10 @@ const renderCard = (allData) => {
     <!-- labels -->
     <div class="flex gap-2 mb-6">
       <div class="badge label-one border-red-200 bg-red-50 text-red-500 flex justify-center items-center gap-1 py-3 px-3 uppercase">
-        <span class="text-xs"><img src="../assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
+        <span class="text-xs"><img src="./assets/BugDroid.png"></span> <span class="text-[10px]">${label1}</span>
       </div>
       <div class="badge label-two border-amber-200 bg-amber-50 text-amber-600 gap-1 py-3 px-3 uppercase font-bold">
-        <span><img src="../assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
+        <span><img src="./assets/Lifebuoy.png"/></span> <span class="text-[9px]">${label2}</span>
       </div>
     </div>
     <div class="pt-4 border-t border-gray-100 text-slate-400 text-sm space-y-1">
