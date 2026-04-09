@@ -49,6 +49,10 @@ To explore the dashboard, use the following default credentials:
 
 ### 📸 Screenshots (Optional)
 
-_Add your project screenshots here to make it more visual!_
+<img width="1093" height="802" alt="Screenshot 2026-04-09 211025" src="https://github.com/user-attachments/assets/c7d288f7-8bb4-424f-b637-5727b653ad57" />
+
+<img width="1834" height="731" alt="Screenshot 2026-04-09 211059" src="https://github.com/user-attachments/assets/3322eaf4-f691-4d24-bc6b-7eda386fe3d6" />
+
+<img width="1802" height="726" alt="Screenshot 2026-04-09 211119" src="https://github.com/user-attachments/assets/74840ae1-7edb-41c4-b41f-a860ec09d94f" />
 
 ---
