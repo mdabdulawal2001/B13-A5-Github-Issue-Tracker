@@ -1,14 +1,25 @@
 # 🛠️ GitHub Issues Tracker
 
-GitHub Issues Tracker is a dynamic web application designed to simulate a professional issue management system. It allows users to track, filter, and view project issues with a clean and intuitive user interface.
+### 📝 Project Overview
+GitHub Issues Tracker is a dynamic web application designed to simulate a professional issue management system. It allows users to track, filter, and view project issues with a clean and intuitive user interface. It focuses on functional logic, secure login simulation, and dynamic data rendering.
+
+---
+
+### 🔗 Relevant Links
+- **Live Demo:** [https://github-issues-tracker-by-abdul-awal.netlify.app/](https://github-issues-tracker-by-abdul-awal.netlify.app/)
+- **GitHub Repository:** [https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker](https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker)
+
+---
+
+### 📸 Screenshots
 
 <p align="center">
-  <a href="https://github-issues-tracker-by-abdul-awal.netlify.app/" target="_blank">
-    <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify" alt="Live Demo" />
-  </a>
-  <a href="https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github" alt="GitHub Repo" />
-  </a>
+  <img alt="Login Screen" src="https://github.com/user-attachments/assets/c7d288f7-8bb4-424f-b637-5727b653ad57" width="100%" />
+</p>
+
+<p align="center">
+  <img alt="Dashboard View" src="https://github.com/user-attachments/assets/3322eaf4-f691-4d24-bc6b-7eda386fe3d6" width="48%" />
+  <img alt="Issue Details" src="https://github.com/user-attachments/assets/74840ae1-7edb-41c4-b41f-a860ec09d94f" width="48%" />
 </p>
 
 ---
@@ -38,6 +49,16 @@ GitHub Issues Tracker is a dynamic web application designed to simulate a profes
 
 ---
 
+### 📦 Dependencies Used
+The following technologies and libraries were used to build this project:
+
+- `HTML5`: For the application structure.
+- `Tailwind CSS`: For utility-first responsive styling.
+- `DaisyUI`: For pre-designed UI components and themes.
+- `JavaScript (ES6)`: For dynamic data handling and DOM manipulation.
+
+---
+
 ### 🔑 Login Credentials
 
 To explore the dashboard, use the following default credentials:
@@ -47,12 +68,22 @@ To explore the dashboard, use the following default credentials:
 
 ---
 
-### 📸 Screenshots 
-
-<img width="1093" height="802" alt="Screenshot 2026-04-09 211025" src="https://github.com/user-attachments/assets/c7d288f7-8bb4-424f-b637-5727b653ad57" />
-
-<img width="1834" height="731" alt="Screenshot 2026-04-09 211059" src="https://github.com/user-attachments/assets/3322eaf4-f691-4d24-bc6b-7eda386fe3d6" />
-
-<img width="1802" height="726" alt="Screenshot 2026-04-09 211119" src="https://github.com/user-attachments/assets/74840ae1-7edb-41c4-b41f-a860ec09d94f" />
+### 🧠 What I Learned
+- **DOM Manipulation:** Mastering how to dynamically update the UI based on user input and data state.
+- **Authentication Logic:** Simulating a secure login flow and managing user access.
+- **Data Filtering:** Implementing real-time search and status-based filtering for large data sets.
+- **Conditional Styling:** Using JavaScript to change CSS classes dynamically (e.g., status colors).
 
 ---
+
+### 🏗️ How to Run Locally
+
+Follow these steps to set up the project on your local machine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker.git
+2. **Setup and Run:**
+   ```bash
+   cd B13-A5-Github-Issue-Tracker
+   # Simply open index.html in your browser or use Live Server
