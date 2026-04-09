@@ -47,7 +47,7 @@ To explore the dashboard, use the following default credentials:
 
 ---
 
-### 📸 Screenshots (Optional)
+### 📸 Screenshots 
 
 <img width="1093" height="802" alt="Screenshot 2026-04-09 211025" src="https://github.com/user-attachments/assets/c7d288f7-8bb4-424f-b637-5727b653ad57" />
 
