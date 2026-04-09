@@ -3,8 +3,8 @@
 GitHub Issues Tracker is a dynamic web application designed to simulate a professional issue management system. It allows users to track, filter, and view project issues with a clean and intuitive user interface.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify" href="https://github-issues-tracker-by-abdul-awal.netlify.app" />
-  <img src="https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github" href="https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker" />
+  <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify" href="[https://github-issues-tracker-by-abdul-awal.netlify.app](https://github-issues-tracker-by-abdul-awal.netlify.app/)" />
+  <img src="https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github" href="[https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker](https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker)" />
 </p>
 
 ---
