@@ -1,75 +1,50 @@
-1️⃣ What is the difference between var, let, and const?
+# 🛠️ GitHub Issues Tracker
 
-Answer : 
+GitHub Issues Tracker is a dynamic web application designed to simulate a professional issue management system. It allows users to track, filter, and view project issues with a clean and intuitive user interface.
 
-var, let, and const are used to declare variables in JavaScript. A variable is a container used to store data.
+<p align="center">
+  <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=netlify" href="https://github-issues-tracker-by-abdul-awal.netlify.app" />
+  <img src="https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github" href="https://github.com/mdabdulawal2001/B13-A5-Github-Issue-Tracker" />
+</p>
 
-    var is the old way to declare variables. It can be re-declared and updated.
+---
 
-    let is the modern way. It can be updated but cannot be re-declared in the same scope.
+### 🚀 Key Features
 
-    const is used for variables whose value should not change. It cannot be updated or re-declared.
+- **🔐 Secure Access:** Integrated login system with admin authentication.
+- **📊 Structured Layout:** Displays issues in a responsive 4-column grid for better visibility.
+- **🔍 Advanced Filtering:** Filter issues by status (Open/Closed) with active state indicators.
+- **📄 Detailed Cards:** Each issue shows the title, author, priority, and specific labels.
+- **⚡ Interactive UX:** - Modal view for deep-diving into issue details.
+  - Real-time search functionality.
+  - Smooth loading spinners for data fetching.
+- **🎨 Dynamic UI:** Color-coded borders and labels based on the issue's current status.
 
-2️⃣ What is the spread operator (...)?
+---
 
-Answer :
+### 🛠️ Technologies Used
 
-The spread operator (...) is used to expand or copy elements of an array or object. It spreads the elements into individual values.
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=html,css,tailwind,js" />
+</p>
 
-Example :
+- **HTML5:** Semantic structure.
+- **Tailwind CSS & DaisyUI:** Modern styling and pre-built UI components.
+- **JavaScript (ES6+):** Logical implementation and dynamic DOM manipulation.
 
-    const numbers = [1,2,3];
-    const newNumbers = [...numbers,4,5];
+---
 
+### 🔑 Login Credentials
 
-3️⃣ What is the difference between map(), filter(), and forEach()?
+To explore the dashboard, use the following default credentials:
 
-Answer :
+> **Username:** `admin`  
+> **Password:** `admin123`
 
-map(), filter(), and forEach() are JavaScript array methods.
+---
 
-    map() modifies each element and returns a new array.
+### 📸 Screenshots (Optional)
 
-    filter() selects elements based on a condition and returns a new array.
+_Add your project screenshots here to make it more visual!_
 
-    forEach() runs a function on each element but does not return a new array.
-
-Example : 
-
-    const numbers = [1,2,3,4];
-
-    numbers.map(n => n*2);
-    numbers.filter(n => n>2);
-    numbers.forEach(n => console.log(n));
-
-
-4️⃣ What is an arrow function?
-
-Answer:
-
-An arrow function is a shorter and modern way to write functions in JavaScript. It uses the arrow symbol (=>) and makes the code shorter and cleaner. When an arrow function has only one expression (one line of code), JavaScript automatically returns the result. Because of this automatic return, we do not need to use curly braces {} or the return keyword. But when the function has multiple lines of code, JavaScript cannot automatically understand which value should be returned. Therefore, we must use curly braces {} to define the function body and explicitly write the return statement.
-
-Example (one line arrow function):
-
-    const add = (a,b) => a + b;
-
-Example (multiple line arrow function):
-
-    const add = (a, b) => {
-    const result = a + b;
-      return result;
-    };
-
-
-5️⃣ What are template literals?
-
-Answer:
-
-Template literals are a feature in JavaScript that make it easier to create and work with strings. They use backticks (` `) instead of single or double quotes. With template literals, we can easily insert variables or expressions inside a string using ${}. This makes the code cleaner, more readable, and easier to write compared to traditional string concatenation.
-
-Example : 
-
-    const name = "Rahim";
-    const age = 20;
-
-    console.log(`My name is ${name} and I am ${age} years old.`);
+---
