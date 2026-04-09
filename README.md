@@ -93,3 +93,10 @@ Follow these steps to set up the project on your local machine:
    ```bash
    cd B13-A5-Github-Issue-Tracker
    # Simply open index.html in your browser or use Live Server
+
+---
+
+<p align="center">
+Developed with ❤️ by <b>MD. ABDUL AWAL TOHA</b>
+</p>
+
