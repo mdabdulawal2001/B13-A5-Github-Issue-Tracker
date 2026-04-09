@@ -11,6 +11,7 @@ GitHub Issues Tracker is a dynamic web application designed to simulate a profes
 
 ---
 
+
 ### 📸 Screenshots
 
 <p align="center">
